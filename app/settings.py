@@ -10,7 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-bd)!ojzy4js9nsj_9wui(=7q1t)ctosx!c@gue0rtwgjf+_pk$"
 DEBUG = True
-ALLOWED_HOSTS = ["localhost", "192.168.100.45"]
+ALLOWED_HOSTS = [".vercel.app", "localhost", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://memoiz.vercel.app", "https://*.vercel.app"]
 
 INSTALLED_APPS = [
     "app",
