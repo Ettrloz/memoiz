@@ -11,6 +11,12 @@
       "@/*": [
         "./*"
       ],
+      "@s:app/*": [
+        "./app/static/app/*"
+      ],
+      "@t:app/*": [
+        "./app/templates/app/*"
+      ],
       "@s:authentication/*": [
         "./authentication/static/authentication/*"
       ],
@@ -22,12 +28,6 @@
       ],
       "@t:core/*": [
         "./core/templates/core/*"
-      ],
-      "@s:memoiz/*": [
-        "./../../../../public/projects/memoiz/src/memoiz/static/memoiz/*"
-      ],
-      "@t:memoiz/*": [
-        "./../../../../public/projects/memoiz/src/memoiz/templates/memoiz/*"
       ]
     }
   },

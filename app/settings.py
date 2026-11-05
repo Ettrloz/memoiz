@@ -13,7 +13,9 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "192.168.100.45"]
 
 INSTALLED_APPS = [
+    "app",
     "authentication",
+    "core",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -21,8 +23,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_vite_plugin",
-    "core",
-    "memoiz",
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",
 ]
