@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm install && pnpm run build && uv run python manage.py collectstatic --noinput",
+  "buildCommand": "pnpm install && pnpm run build && uv run python manage.py collectstatic --noinput && uv run python manage.py migrate --noinput",
   "outputDirectory": "staticfiles",
   "functions": {
     "nama_project/wsgi.py": {

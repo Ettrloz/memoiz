@@ -8,8 +8,12 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-bd)!ojzy4js9nsj_9wui(=7q1t)ctosx!c@gue0rtwgjf+_pk$"
-DEBUG = True
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", "django-insecure-bd)!ojzy4js9nsj_9wui(=7q1t)ctosx!c@gue0rtwgjf+_pk$"
+)
+
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+
 ALLOWED_HOSTS = [".vercel.app", "localhost", "127.0.0.1"]
 CSRF_TRUSTED_ORIGINS = ["https://memoiz.vercel.app", "https://*.vercel.app"]
 
@@ -41,6 +45,7 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -48,7 +53,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "app.urls"
@@ -96,7 +100,6 @@ AUTH_USER_MODEL = "authentication.User"
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DJANGO_VITE_PLUGIN = {
@@ -107,11 +110,8 @@ DJANGO_VITE_PLUGIN = {
 }
 
 USE_I18N = True
-
 LANGUAGE_CODE = "id"
-
 LANGUAGES = [("id", "Bahasa Indonesia"), ("en", "English")]
-
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
 LOGIN_URL = "/login/"
