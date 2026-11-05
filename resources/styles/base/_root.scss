@@ -1,0 +1,32 @@
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+:root {
+  @include create-vars($theme-colors);
+
+  @include create-namespace-vars($z-indexes, z);
+  @include create-namespace-vars($rounds, round);
+
+  @include create-vars(
+    (
+      border-color: $border-color,
+      border-style: $border-style,
+      border-width: $border-width,
+
+      transition-duration-fast: $transition-duration-fast,
+      transition-duration-normal: $transition-duration-normal,
+      transition-duration-slow: $transition-duration-slow,
+
+      font-family-sans: $font-family-sans,
+      font-family-serif: $font-family-serif,
+      font-family-mono: $font-family-mono,
+
+      body-font-family: $body-font-family,
+      body-font-size: $body-font-size,
+      body-font-weight: $body-font-weight,
+      body-line-height: $body-line-height,
+      body-color: $body-color,
+      body-bg: $body-bg
+    )
+  );
+}

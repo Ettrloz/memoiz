@@ -1,0 +1,47 @@
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+$floating-input-label-space: 0.25rem !default;
+
+.floating-input {
+  @include create-var(floating-input-label-space, $floating-input-label-space);
+
+  display: flex;
+  position: relative;
+  color: get-var(control-color);
+  background-color: get-var(control-bg);
+  border-color: get-var(control-border-color);
+  border-style: get-var(control-border-style);
+  border-width: get-var(control-border-width);
+
+  @include round(get-var(control-round));
+
+  > .input {
+    background-color: transparent;
+    border: 0;
+
+    &::placeholder {
+      color: transparent !important;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      ~ .floating-input-label {
+        top: 0;
+        left: calc(get-var(control-padding-x) - get-var(floating-input-label-space));
+        padding-inline: get-var(floating-input-label-space);
+      }
+    }
+  }
+
+  > .floating-input-label {
+    position: absolute;
+    top: 50%;
+    padding-inline-start: get-var(control-padding-x);
+    font-size: get-var(control-font-size);
+    color: get-var(control-color);
+    background-color: get-var(control-bg);
+    transition: top get-var(transition-duration-normal);
+    transform: translateY(-50%);
+  }
+}

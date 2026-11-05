@@ -1,0 +1,39 @@
+$justify-utils: (
+  start: start,
+  end: end,
+  between: space-between
+) !default;
+
+@each $name, $value in $justify-utils {
+  .justify-#{$name} {
+    justify-content: $value;
+  }
+}
+
+$align-utils: (
+  start: start,
+  end: end,
+  center: center
+) !default;
+
+@each $name, $value in $align-utils {
+  .align-#{$name} {
+    align-items: $value;
+  }
+}
+
+$grow-utils: (0, 1) !default;
+
+@each $value in $grow-utils {
+  .grow-#{$value} {
+    flex-grow: $value;
+  }
+}
+
+$shrink-utils: (0, 1) !default;
+
+@each $value in $shrink-utils {
+  .shrink-#{$value} {
+    flex-shrink: $value;
+  }
+}

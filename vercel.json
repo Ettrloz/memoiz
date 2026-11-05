@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm run build && uv run python manage.py collectstatic --noinput",
+  "outputDirectory": "staticfiles",
+  "functions": {
+    "nama_project/wsgi.py": {
+      "maxDuration": 15
+    }
+  },
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "nama_project/wsgi.py"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+$overlay-bg: $gray !default;
+$overlay-alpha: 0.25 !default;
+
+.overlay {
+  @include create-namespace-vars(
+    (
+      bg: $overlay-bg,
+      alpha: $overlay-alpha
+    ),
+    overlay
+  );
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  color: transparent !important;
+  background-color: get-var(overlay-bg);
+  opacity: get-var(overlay-alpha);
+  z-index: get-var(z-overlay);
+}

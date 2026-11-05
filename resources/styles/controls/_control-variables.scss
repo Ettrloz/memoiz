@@ -1,0 +1,11 @@
+@use "./../abstracts" as *;
+
+$control-padding-x: 1rem !default;
+$control-padding-y: 0.875rem !default;
+$control-font-size: $body-font-size !default;
+$control-color: get-var(body-color) !default;
+$control-bg: get-var(body-bg) !default;
+$control-border-color: get-var(border-color) !default;
+$control-border-style: solid !default;
+$control-border-width: get-var(border-width) !default;
+$control-round: $round-sm !default;

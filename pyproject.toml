@@ -1,0 +1,31 @@
+[project]
+name = "memoiz"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Ettrloz", email = "ettrloz@gmail.com" }]
+requires-python = ">=3.13"
+dependencies = [
+  "django>=6.1.2",
+  "django-vite-plugin>=5.0.0",
+  "djangorestframework>=3.18.3",
+  "djangorestframework-simplejwt>=5.5.1",
+  "gunicorn>=26.2.0",
+  "psycopg[binary]>=3.3.7",
+  "python-dotenv>=1.2.4",
+  "waitress>=3.0.2",
+  "whitenoise>=6.12.0",
+]
+
+[project.scripts]
+memoiz = "memoiz:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = ["lefthook>=2.2.2", "ruff>=0.17.3", "ty>=0.0.95"]
+
+[tool.vercel]
+entrypoint = "nama_project.wsgi:application"

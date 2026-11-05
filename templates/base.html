@@ -1,0 +1,24 @@
+{% load vite %}
+<!doctype html>
+<html
+  lang="id"
+  x-data="{
+  showAuthenticationDialog: false
+}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Memoiz{% endblock %}</title>
+    {% include "./partials/metatag.html" %}
+    {% include "./partials/theme-script.html" %}
+    {% vite %}
+    {% vite 'resources/main.ts' 'resources/styles/index.scss' %}
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+    {% include "./partials/signin.html" %}
+    {% include "./partials/signup.html" %}
+  </body>
+</html>

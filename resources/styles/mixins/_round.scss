@@ -1,0 +1,39 @@
+@use "./dir" as *;
+
+@mixin round($value) {
+  border-radius: $value;
+}
+
+@mixin round-top($value) {
+  border-top-left-radius: $value;
+  border-top-right-radius: $value;
+}
+
+@mixin round-bottom($value) {
+  border-bottom-left-radius: $value;
+  border-bottom-right-radius: $value;
+}
+
+@mixin round-start($value) {
+  @include ltr() {
+    border-top-left-radius: $value;
+    border-bottom-left-radius: $value;
+  }
+
+  @include rtl() {
+    border-top-right-radius: $value;
+    border-bottom-right-radius: $value;
+  }
+}
+
+@mixin round-end($value) {
+  @include ltr() {
+    border-top-right-radius: $value;
+    border-bottom-right-radius: $value;
+  }
+
+  @include rtl() {
+    border-top-left-radius: $value;
+    border-bottom-left-radius: $value;
+  }
+}

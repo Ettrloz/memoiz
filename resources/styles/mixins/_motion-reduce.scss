@@ -1,0 +1,11 @@
+@use "./../abstracts" as *;
+
+@mixin motion-reduce() {
+  @if $enable-motion-reduce {
+    transition-duration: 0ms !important;
+  } @else {
+    @media (prefers-reduced-motion: reduce) {
+      transition-duration: 0ms !important;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@use "./../abstracts" as abstracts;
+
+@mixin create-var($name, $value, $prefix: abstracts.$prefix) {
+  --#{$prefix}#{$name}: #{$value};
+}
+
+@mixin create-vars($map, $prefix: abstracts.$prefix) {
+  @each $name, $value in $map {
+    @include create-var($name, $value, $prefix);
+  }
+}
+
+@mixin create-namespace-vars($map, $namespace, $prefix: abstracts.$prefix) {
+  @include create-vars($map, #{$prefix}#{$namespace}-);
+}

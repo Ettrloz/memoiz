@@ -1,0 +1,21 @@
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+.input {
+  display: block;
+  padding: get-var(control-padding);
+  width: 100%;
+  font-size: get-var(control-font-size);
+  color: get-var(control-color);
+  background-color: get-var(control-bg);
+  border-color: get-var(control-border-color);
+  border-style: get-var(control-border-style);
+  border-width: get-var(control-border-width);
+
+  @include round(get-var(control-round));
+  @include motion-reduce();
+
+  &:focus {
+    outline: none;
+  }
+}

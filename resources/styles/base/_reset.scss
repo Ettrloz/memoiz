@@ -1,0 +1,77 @@
+@use "./../abstracts" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: get-var(body-font-family);
+  font-size: get-var(body-font-size);
+  font-weight: get-var(body-font-weight);
+  line-height: get-var(body-line-height);
+  color: get-var(body-color);
+  background-color: get-var(body-bg);
+
+  @if not $enable-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+%heading {
+  margin-bottom: $heading-margin-bottom;
+  font-weight: $heading-font-weight;
+}
+
+h1 {
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
+}
+
+h2 {
+  font-size: $h2-font-size;
+  line-height: $h2-line-height;
+}
+
+h3 {
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+}
+
+h4 {
+  font-size: $h4-font-size;
+  line-height: $h4-line-height;
+}
+
+h5 {
+  font-size: $h5-font-size;
+  line-height: $h5-line-height;
+}
+
+h6 {
+  font-size: $h6-font-size;
+  line-height: $h6-line-height;
+}
+
+p {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+button,
+input:is([type="button"], [type="submit"], [type="reset"]) {
+  -webkit-appearance: button;
+  appearance: button;
+
+  &:not([disabled], :disabled) {
+    cursor: pointer;
+  }
+}
+
+button,
+input,
+select,
+option,
+textarea {
+  font: inherit;
+}

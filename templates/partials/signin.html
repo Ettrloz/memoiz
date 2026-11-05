@@ -1,0 +1,15 @@
+<div class="dialog" x-show="showAuthenticationDialog === 'signin'" x-cloak>
+  <div class="dialog-box justify-center">
+    <div class="dialog-body">
+      <h2>Welcome</h2>
+      <p>Before continue please sign in to your account</p>
+      <form action="POST" class="flex flex-col gap-4">
+        <div class="floating-input">
+          <input class="input" type="email" placeholder="Email" id="signinEmail" />
+          <label class="floating-input-label" for="signinEmail">Email</label>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="overlay"></div>
+</div>

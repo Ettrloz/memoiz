@@ -1,0 +1,37 @@
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+$button-padding-x: $spacing !default;
+$button-padding-y: $spacing !default;
+$button-color: currentcolor !default;
+$button-bg: transparent !default;
+$button-border-color: transparent !default;
+$button-border-style: solid !default;
+$button-border-width: 1px !default;
+
+.button {
+  @include create-namespace-vars(
+    (
+      padding-x: $button-padding-x,
+      padding-y: $button-padding-y,
+      color: $button-color,
+      bg: $button-bg,
+      border-color: $button-border-color,
+      border-style: $button-border-style,
+      border-width: $button-border-width
+    ),
+    button
+  );
+
+  display: inline-flex;
+  align-items: center;
+  padding: get-vars((button-padding-y, button-padding-x));
+  color: get-var(button-color);
+  background-color: get-var(button-bg);
+  cursor: pointer;
+
+  &:is([disabled], :disabled) {
+    cursor: auto;
+    pointer-events: none;
+  }
+}

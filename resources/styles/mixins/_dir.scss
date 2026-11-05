@@ -1,0 +1,21 @@
+@use "./../abstracts" as *;
+
+@mixin ltr() {
+  @if $default-direction == "ltr" {
+    @content;
+  } @else {
+    &:dir(ltr) {
+      @content;
+    }
+  }
+}
+
+@mixin rtl() {
+  @if $default-direction == "rtl" {
+    @content;
+  } @else {
+    &:dir(rtl) {
+      @content;
+    }
+  }
+}

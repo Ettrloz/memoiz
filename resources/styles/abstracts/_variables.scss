@@ -1,0 +1,141 @@
+@use "./functions" as *;
+@use "./colors" as *;
+
+//
+// Prefix
+//
+$prefix: memoize- !default;
+
+//
+// Options
+//
+
+$default-direction: ltr !default;
+
+$enable-motion-reduce: false !default;
+$enable-tap-highlight: true !default;
+
+//
+// Breakpoints
+//
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+//
+// Spacing
+//
+
+$spacing: 0.5rem !default;
+
+//
+// Z-index
+//
+
+$z-overlay: 99 !default;
+$z-dialog: 100 !default;
+
+$z-indexes: (
+  overlay: $z-overlay,
+  dialog: $z-dialog
+) !default;
+
+//
+// Border
+//
+
+$border-color: $gray-500 !default;
+$border-style: solid !default;
+$border-width: 1px !default;
+
+//
+// Rounds
+//
+
+$round-xs: 2px !default;
+$round-sm: 4px !default;
+$round-md: 6px !default;
+$round-lg: 8px !default;
+$round-xl: 10px !default;
+$round-xxl: 12px !default;
+
+$rounds: (
+  xs: $round-xs,
+  sm: $round-sm,
+  md: $round-md,
+  lg: $round-lg,
+  xl: $round-xl,
+  xxl: $round-xxl
+) !default;
+
+//
+// Transitions
+//
+
+$transition-duration-fast: 530ms !default;
+$transition-duration-normal: 500ms !default;
+$transition-duration-slow: 700ms !default;
+
+//
+// Typography
+//
+
+$font-family-sans: sans-serif !default;
+$font-family-serif: serif !default;
+$font-family-mono: monospace !default;
+
+$font-size-small: 0.875rem !default;
+$font-size-normal: 1rem !default;
+$font-size-large: 1.125rem !default;
+
+$font-weight-thin: 300 !default;
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+
+$line-height-small: 1.25 !default;
+$line-height-normal: 1.5 !default;
+$line-height-large: 1.75 !default;
+
+//
+// Body
+//
+
+$body-font-family: $font-family-sans !default;
+$body-font-size: $font-size-normal !default;
+$body-font-weight: $font-weight-regular !default;
+$body-line-height: $line-height-normal !default;
+$body-color: $gray-900 !default;
+$body-bg: $white !default;
+
+//
+// Heading
+//
+
+$heading-margin-bottom: $spacing !default;
+$heading-font-size-scale: 0.25 !default;
+$heading-font-weight: $font-weight-semibold !default;
+
+$h1-font-size: $font-size-normal + $heading-font-size-scale * 5 !default;
+$h1-line-height: $line-height-normal + 0.25 !default;
+$h2-font-size: $font-size-normal + $heading-font-size-scale * 4 !default;
+$h2-line-height: $line-height-normal + 0.25 !default;
+$h3-font-size: $font-size-normal + $heading-font-size-scale * 3 !default;
+$h3-line-height: $line-height-normal + 0.125 !default;
+$h4-font-size: $font-size-normal + $heading-font-size-scale * 2 !default;
+$h4-line-height: $line-height-normal + 0.125 !default;
+$h5-font-size: $font-size-normal + $heading-font-size-scale * 1 !default;
+$h5-line-height: $line-height-normal !default;
+$h6-font-size: $font-size-normal !default;
+$h6-line-height: $line-height-normal !default;
+
+//
+// Paragraph
+//
+
+$paragraph-margin-bottom: $spacing !default;

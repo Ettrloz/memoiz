@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Memoiz{% endblock %}
+
+{% block content %}
+  <div
+    class="app"
+    id="app"
+    x-data="{
+  sidebarWidth: 260,
+  isDragging: false,
+  startX: 0,
+  startWidth: 0
+}"
+  >
+    <aside class="app-sidebar" :style="`width: ${sidebarWidth}px`">
+      <div class="app-sidebar-brand">
+        <span>📒 Memoiz</span>
+      </div>
+      <div class="app-sidebar-search">
+        <input type="text" placeholder="Search..." />
+      </div>
+      <div class="app-sidebar-nav">
+        <div class="app-sidebar-group">
+          <div class="app-sidebar-title">Categories</div>
+          <div class="app-sidebar-item is-active">📝 All Notes</div>
+          <div class="app-sidebar-item">⭐ Starred</div>
+          <div class="app-sidebar-item">🏷️ Tags</div>
+        </div>
+        <div class="app-sidebar-group">
+          <div class="app-sidebar-title">Tools</div>
+          <div class="app-sidebar-item">🗑️ Trash</div>
+        </div>
+      </div>
+      <div class="app-sidebar-footer">
+        <div class="app-sidebar-item">⚙️ Settings</div>
+        <div class="app-sidebar-item">
+          <div class="app-sidebar-avatar">U</div>
+          <span>User Name</span>
+        </div>
+      </div>
+    </aside>
+    <div
+      class="app-resizer"
+      @pointerdown.prevent="isDragging = true; startX = $event.clientX; startWidth = sidebarWidth"
+      @pointermove.window="if(isDragging) {
+         let w = startWidth + ($event.clientX - startX);
+         if(w < 200) w = 200;
+         if(w > window.innerWidth - 100) w = window.innerWidth - 100; /* Jangan sampai menutupi seluruh layar */
+         sidebarWidth = w;
+       }"
+      @pointerup.window="isDragging = false"
+    ></div>
+    <main class="app-editor">
+      <div class="app-editor-header">
+        <button type="button" class="app-editor-back" id="editor-back">←</button>
+        <span class="app-editor-title">Meeting Notes</span>
+        <span class="app-editor-meta">Edited 2h ago</span>
+      </div>
+      <textarea class="app-editor-body" placeholder="Start typing...">
+Under construction please wait</textarea>
+    </main>
+  </div>
+{% endblock %}

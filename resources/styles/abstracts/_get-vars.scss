@@ -1,0 +1,26 @@
+@use "sass:list";
+@use "sass:string";
+@use "./variables";
+
+@function get-var($name, $prefix: variables.$prefix) {
+  @return var(--#{$prefix}#{$name});
+}
+
+@function get-vars($names, $separator: false, $prefix: variables.$prefix) {
+  $var: "";
+
+  @each $name in $names {
+    $is-last: list.index($names, $name) >= list.length($names) - 1;
+    $var: $var + get-var($name, $prefix);
+
+    @if $is-last {
+      @if $separator {
+        $var: $var + ", ";
+      } @else {
+        $var: $var + " ";
+      }
+    }
+  }
+
+  @return string.unquote($var);
+}

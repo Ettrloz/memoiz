@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Memoiz{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+  <nav class="navbar border-b">
+    <div class="navbar-start">
+      <a href="{% url 'memoiz:index' %}" class="text-primary font-medium">Memoiz</a>
+    </div>
+    <div class="navbar-end">
+      <button @click="showAuthenticationDialog = true" class="btn btn-ghost text-primary">
+        Sign in
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    {% block main-content %}{% endblock %}
+  </main>
+</div>

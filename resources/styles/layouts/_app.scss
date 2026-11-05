@@ -1,0 +1,232 @@
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+$app-sidebar-color: get-color-contrast($primary) !default;
+$app-sidebar-bg: $primary !default;
+
+.app {
+  @include create-namespace-vars(
+    (
+      sidebar-padding: $spacing,
+      sidebar-color: $app-sidebar-color,
+      sidebar-bg: $app-sidebar-bg,
+      sidebar-gap: $spacing * 2,
+      sidebar-items-padding: $spacing,
+      sidebar-items-round: $round-md,
+      sidebar-items-gap: $spacing,
+      sidebar-items-hover-color: get-color-contrast(shade($primary, 10%)),
+      sidebar-items-hover-bg: shade($primary, 10%)
+    ),
+    app
+  );
+
+  display: flex;
+  height: 100dvh;
+  background-color: get-var(app-bg);
+  color: get-var(app-text-main);
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    > .app-sidebar {
+      flex: 1;
+      display: flex;
+    }
+    > .app-editor {
+      display: none;
+    }
+
+    &.is-editing > .app-sidebar {
+      display: none;
+    }
+    &.is-editing > .app-editor {
+      display: flex;
+      flex: 1;
+    }
+  }
+
+  > .app-sidebar {
+    display: flex;
+    width: get-var(app-sidebar-width);
+    min-height: 0;
+    padding: get-var(app-sidebar-padding);
+    color: get-var(app-sidebar-color);
+    background-color: get-var(app-sidebar-bg);
+    border-right: 1px solid get-var(app-border);
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: get-var(app-sidebar-gap);
+
+    @include breakpoint-max(sm) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw !important;
+      height: 100vh !important;
+    }
+
+    > .app-sidebar-brand {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    > .app-sidebar-search {
+      padding: get-var(app-sidebar-search-padding);
+
+      > input {
+        width: 100%;
+        color: get-var(app-text-main);
+        background-color: get-var(app-hover-bg);
+        border: 1px solid transparent;
+
+        &::placeholder {
+          color: get-var(app-text-muted);
+        }
+        &:focus-visible {
+          border-color: get-var(app-border);
+        }
+      }
+    }
+
+    > .app-sidebar-nav {
+      flex: 1 1 auto;
+      overflow-y: auto;
+
+      > .app-sidebar-group {
+        display: flex;
+        margin-bottom: get-var(app-sidebar-gap);
+        flex-direction: column;
+        gap: get-var(app-sidebar-items-gap);
+
+        > .app-sidebar-title {
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        > .app-sidebar-item {
+          display: flex;
+          padding: get-var(app-sidebar-items-padding);
+          color: get-var(app-sidebar-items-color);
+          cursor: pointer;
+          align-items: center;
+
+          @include round(get-var(app-sidebar-items-round));
+
+          &:hover,
+          &.is-active {
+            background-color: get-var(app-sidebar-items-hover-bg);
+          }
+        }
+      }
+    }
+
+    > .app-sidebar-footer {
+      border-top: 1px solid get-var(app-border);
+      flex-shrink: 0;
+
+      > .app-sidebar-item {
+        display: flex;
+        color: get-var(app-text-main);
+        align-items: center;
+        cursor: pointer;
+        transition: background 0.1s;
+
+        &:hover {
+          background: get-var(app-hover-bg);
+        }
+
+        > .app-sidebar-avatar {
+          display: flex;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          color: #fff;
+          background-color: get-var(app-primary);
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  > .app-editor {
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+    background-color: get-var(app-bg);
+    flex: 1 1 auto;
+    flex-direction: column;
+
+    > .app-editor-header {
+      display: flex;
+      padding: get-var(app-editor-header-padding);
+      border-bottom: 1px solid get-var(app-editor-header-border-color);
+      align-items: center;
+      flex: 0 0 auto;
+
+      > .app-editor-back {
+        display: none;
+        color: get-var(app-text-main);
+        background-color: get-var(app-hover-bg);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        @media (max-width: 767px) {
+          display: inline-block;
+        }
+      }
+
+      > .app-editor-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      > .app-editor-meta {
+        margin-left: auto;
+      }
+    }
+
+    > .app-editor-body {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
+      min-height: 0;
+      color: get-var(app-text-main);
+      background-color: transparent;
+      border: none;
+      outline: none;
+      flex: 1 1 auto;
+      resize: none;
+    }
+  }
+
+  > .app-resizer {
+    width: 8px;
+    cursor: col-resize;
+    background: transparent;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+    touch-action: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: get-var(app-border);
+      transform: translateX(-50%);
+    }
+
+    &:hover,
+    &:active {
+      background: get-var(app-primary);
+      &::after {
+        background: transparent;
+      }
+    }
+  }
+}

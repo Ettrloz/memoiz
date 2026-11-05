@@ -1,0 +1,13 @@
+@use "sass:list";
+@use "./../abstracts" as *;
+
+$spacing-scales: (0, 1, 2, 3, 4, 5) !default;
+$spacing-utils: list.join(auto, $spacing-scales) !default;
+
+@each $value in $spacing-utils {
+  .m-#{$value},
+  .mt-#{$value},
+  .my-#{$value} {
+    margin-top: if(sass($value == "auto"): auto; else: $spacing * $value);
+  }
+}

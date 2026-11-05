@@ -1,0 +1,21 @@
+@use "./control-variables" as *;
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+:root {
+  @include create-namespace-vars(
+    (
+      padding-x: $control-padding-x,
+      padding-y: $control-padding-y,
+      padding: get-vars((control-padding-y, control-padding-x)),
+      font-size: $control-font-size,
+      color: $control-color,
+      bg: $control-bg,
+      border-color: $control-border-color,
+      border-style: $control-border-style,
+      border-width: $control-border-width,
+      round: $control-round
+    ),
+    control
+  );
+}

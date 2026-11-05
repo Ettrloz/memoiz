@@ -1,0 +1,17 @@
+@use "sass:color";
+
+@function tint($value, $amount) {
+  @return color.scale($value, $lightness: $amount);
+}
+
+@function shade($value, $amount) {
+  @return color.scale($value, $lightness: -$amount);
+}
+
+@function get-color-contrast($color, $light: #000, $dark: #fff) {
+  @if color.channel($color, "lightness", $space: hsl) > 50% {
+    @return $light;
+  } @else {
+    @return $dark;
+  }
+}

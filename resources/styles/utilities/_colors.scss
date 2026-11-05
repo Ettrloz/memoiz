@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+@each $name in map.keys($theme-colors) {
+  .text-#{$name} {
+    @include create-var(text-alpha, 1);
+
+    color: oklch(from get-var($name) l c h / get-var(text-alpha));
+  }
+}
+
+$text-alpha-utils: (
+  0: 0,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  100: 1
+) !default;
+
+@each $level, $amount in $text-alpha-utils {
+  .text-#{$level} {
+    @include create-var(text-alpha, $amount);
+  }
+}

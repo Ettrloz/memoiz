@@ -1,0 +1,79 @@
+@use "sass:map";
+@use "./../abstracts" as *;
+@use "./../mixins" as *;
+
+@each $name in map.keys($theme-colors) {
+  .border-#{$name},
+  .border-t-#{$name},
+  .border-y-#{$name} {
+    @include create-var(border-alpha, 1);
+
+    border-top-color: oklch(from get-var($name) l c h / get-var(text-alpha));
+  }
+
+  .border-#{$name},
+  .border-b-#{$name},
+  .border-y-#{$name} {
+    @include create-var(border-alpha, 1);
+
+    border-bottom-color: oklch(from get-var($name) l c h / get-var(text-alpha));
+  }
+
+  .border-#{$name},
+  .border-s-#{$name},
+  .border-x-#{$name} {
+    @include create-var(border-alpha, 1);
+
+    border-inline-start-color: oklch(from get-var($name) l c h / get-var(text-alpha));
+  }
+
+  .border-#{$name},
+  .border-e-#{$name},
+  .border-x-#{$name} {
+    @include create-var(border-alpha, 1);
+
+    border-inline-end-color: oklch(from get-var($name) l c h / get-var(text-alpha));
+  }
+}
+
+$border-alpha-utils: (
+  0: 0,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  100: 1
+) !default;
+
+@each $level, $amount in $border-alpha-utils {
+  .border-#{$level} {
+    @include create-var(border-alpha, $amount);
+  }
+}
+
+$border-width-utils: (0, 1, 2, 3) !default;
+
+@each $width in $border-width-utils {
+  .border-#{$width},
+  .border-t-#{$width},
+  .border-y-#{$width} {
+    border-top-width: #{$width}px;
+  }
+
+  .border-#{$width},
+  .border-b-#{$width},
+  .border-y-#{$width} {
+    border-bottom-width: #{$width}px;
+  }
+
+  .border-#{$width},
+  .border-s-#{$width},
+  .border-x-#{$width} {
+    border-inline-start-width: #{$width}px;
+  }
+
+  .border-#{$width},
+  .border-e-#{$width},
+  .border-x-#{$width} {
+    border-inline-end-width: #{$width}px;
+  }
+}

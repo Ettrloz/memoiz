@@ -1,0 +1,17 @@
+@use "./../abstracts" as *;
+
+@mixin breakpoint-min($name) {
+  $value: get-breakpoint($name);
+
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+@mixin breakpoint-max($name) {
+  $value: get-breakpoint($name) - 0.01;
+
+  @media (max-width: $value) {
+    @content;
+  }
+}
