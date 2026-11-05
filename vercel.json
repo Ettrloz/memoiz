@@ -13,7 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "nama_project/wsgi.py"
+      "dest": "app/wsgi.py"
     }
   ]
 }
