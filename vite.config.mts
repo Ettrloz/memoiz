@@ -1,4 +1,5 @@
 import { djangoVitePlugin } from 'django-vite-plugin';
+import fs from 'node:fs';
 import path from 'node:path';
 import { NodePackageImporter } from 'sass-embedded';
 import { defineConfig, loadEnv } from 'vite';
@@ -9,7 +10,24 @@ export default defineConfig(({ command, mode }) => {
   const djangoPort = env.DJANGO_PORT || 9001;
   const vitePort = Number(env.VITE_PORT) || 9002;
   const devOrigin = devHost + ':' + djangoPort;
-  const isWindows = process.platform === 'win32';
+
+  const possiblePaths = [
+    '.vercel/python/.venv/bin/python',
+    '.venv/Scripts/python.exe',
+    '.venv/bin/python',
+    'python3',
+    'python'
+  ];
+
+  const pyPath =
+    possiblePaths.find(p => {
+      // Jika path absolut/relatif, cek keberadaannya
+      if (p.includes('/') || p.includes('\\')) {
+        return fs.existsSync(path.resolve(import.meta.dirname, p));
+      }
+
+      return true;
+    }) || 'python';
 
   return {
     base: command === 'build' ? '/static' : '/',
@@ -43,8 +61,7 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       djangoVitePlugin({
         input: ['resources/main.ts', 'resources/styles/index.scss'],
-        pyPath: isWindows ? './.venv/Scripts/python.exe' : 'uv',
-        pyArgs: isWindows ? [] : ['run', 'python']
+        pyPath: pyPath
       })
     ]
   };
