@@ -9,6 +9,7 @@ export default defineConfig(({ command, mode }) => {
   const djangoPort = env.DJANGO_PORT || 9001;
   const vitePort = Number(env.VITE_PORT) || 9002;
   const devOrigin = devHost + ':' + djangoPort;
+  const isWindows = process.platform === 'win32';
 
   return {
     base: command === 'build' ? '/static' : '/',
@@ -42,7 +43,8 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       djangoVitePlugin({
         input: ['resources/main.ts', 'resources/styles/index.scss'],
-        pyPath: './.venv/Scripts/python.exe'
+        pyPath: isWindows ? './.venv/Scripts/python.exe' : 'uv',
+        pyArgs: isWindows ? [] : ['run', 'python']
       })
     ]
   };

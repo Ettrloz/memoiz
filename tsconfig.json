@@ -8,13 +8,27 @@
     "rootDir": "resources",
     "types": ["node", "vite/client"],
     "paths": {
-      "@/*": ["./*"],
-      "@s:authentication/*": ["./authentication/static/authentication/*"],
-      "@t:authentication/*": ["./authentication/templates/authentication/*"],
-      "@s:core/*": ["./core/static/core/*"],
-      "@t:core/*": ["./core/templates/core/*"],
-      "@s:memoiz/*": ["./../../../../public/projects/memoiz/src/memoiz/static/memoiz/*"],
-      "@t:memoiz/*": ["./../../../../public/projects/memoiz/src/memoiz/templates/memoiz/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@s:authentication/*": [
+        "./authentication/static/authentication/*"
+      ],
+      "@t:authentication/*": [
+        "./authentication/templates/authentication/*"
+      ],
+      "@s:core/*": [
+        "./core/static/core/*"
+      ],
+      "@t:core/*": [
+        "./core/templates/core/*"
+      ],
+      "@s:memoiz/*": [
+        "./../../../../public/projects/memoiz/src/memoiz/static/memoiz/*"
+      ],
+      "@t:memoiz/*": [
+        "./../../../../public/projects/memoiz/src/memoiz/templates/memoiz/*"
+      ]
     }
   },
   "include": ["resources"]
